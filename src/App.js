@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Navigation from './components/navigation/navigation';
-import Logo from './components/logo/logo'
+import Logo from './components/logo/logo';
+import ImageLinkForm  from './components/ImageLinkForm /ImageLinkForm '
 
 export class App extends Component {
   render() {
@@ -8,6 +9,7 @@ export class App extends Component {
       <div>
         <Navigation />
         <Logo />
+        <ImageLinkForm />
       </div>
     )
   }
