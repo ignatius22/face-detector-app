@@ -23,6 +23,20 @@ const particlesOption = {
 
 
 export class App extends Component {
+
+  constructor(props) {
+    super(props)
+  
+    this.state = {
+       input:''
+    }
+  }
+   onInputChange = (event) => {
+    console.log(event)
+   }
+
+
+
   render() {
   
     return (
@@ -32,7 +46,7 @@ export class App extends Component {
         <Navigation />
         <Logo />
         <Rank />
-        <ImageLinkForm />
+        <ImageLinkForm  onInputChange={this.onInputChange}/>
       </div>
     );
   }
