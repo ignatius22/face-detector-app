@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Clarifai from 'clarifai';
 import Navigation from './components/navigation/navigation';
 import './App.css';
 import Logo from './components/logo/logo';
@@ -8,6 +9,9 @@ import Rank from './components/Rank/Rank';
 
 
 
+const app = new Clarifai.App({
+  apiKey: 'd38d4a5d1b774017a2d1a38010ca1f60'
+ });
 
 const particlesOption = {
   particles: {
@@ -32,10 +36,20 @@ export class App extends Component {
     }
   }
    onInputChange = (event) => {
-    console.log(event)
+    console.log(event.target.value)
    }
 
-
+   onButtonSubmit = () =>{
+     console.log('click')
+     app.models.predict("a403429f2ddf4b49b307e318f00e528b", "https://samples.clarifai.com/face-det.jpg").then(
+    function(response) {
+      // do something with response
+    },
+    function(err) {
+      // there was an error
+    }
+  );
+   }
 
   render() {
   
@@ -46,7 +60,10 @@ export class App extends Component {
         <Navigation />
         <Logo />
         <Rank />
-        <ImageLinkForm  onInputChange={this.onInputChange}/>
+        <ImageLinkForm  
+         onInputChange={this.onInputChange}
+         onButtonSubmit={this.onButtonSubmit}
+         />
       </div>
     );
   }
